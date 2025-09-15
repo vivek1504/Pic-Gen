@@ -12,10 +12,10 @@ const StatsSection = () => {
                             useGrouping
                             end={4563090}
                             duration={0.9}
-                            className="text-6xl font-semibold bg-gradient-to-r from-primary to-accent bg-clip-text text-white">
+                            className="text-5xl font-semibold bg-gradient-to-r from-primary to-accent bg-clip-text text-white">
 
                         </CountUp>
-                        <span className="text-6xl font-semibold bg-gradient-to-r from-primary to-accent bg-clip-text text-white">
+                        <span className="text-5xl font-semibold bg-gradient-to-r from-primary to-accent bg-clip-text text-white">
                             +
                         </span>
                         <div className="text-muted-foreground text-lg font-medium tracking-wide">
@@ -30,10 +30,10 @@ const StatsSection = () => {
                             useGrouping
                             end={803893847}
                             duration={0.9}
-                            className="text-6xl font-semibold bg-gradient-to-r from-primary to-accent bg-clip-text text-white">
+                            className="text-5xl font-semibold bg-gradient-to-r from-primary to-accent bg-clip-text text-white">
 
                         </CountUp>
-                        <span className="text-6xl font-semibold bg-gradient-to-r from-primary to-accent bg-clip-text text-white">
+                        <span className="text-5xl font-semibold bg-gradient-to-r from-primary to-accent bg-clip-text text-white">
                             +
                         </span>
                         <div className="text-muted-foreground text-lg font-medium tracking-wide">

@@ -10,7 +10,7 @@ const InfoCard = () => {
                     </h2>
 
                     <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                        <div className="ai-card text-center space-y-6  p-6 rounded-2xl shadow-lg bg-white/5 backdrop-blur-md border border-white/20">
+                        <div className="ai-card space-y-6  p-6 rounded-2xl shadow-lg border border-white/10 bg-gradient-to-br from-white/5 to-transparent hover:from-white/10 hover:to-white/5 transition-all duration-300 hover:scale-[1.02] text-center">
                             <div className="flex items-center justify-center w-16 h-16 mx-auto rounded-xl gradient-primary glow-primary">
                                 <PenTool className="w-8 h-8 text-white" />
                             </div>
@@ -23,7 +23,7 @@ const InfoCard = () => {
                             </div>
                         </div>
 
-                        <div className="ai-card text-center space-y-6 p-6 rounded-2xl shadow-lg bg-white/5 backdrop-blur-md border border-white/20">
+                        <div className="ai-card space-y-6  p-6 rounded-2xl shadow-lg border border-white/10 bg-gradient-to-br from-white/5 to-transparent hover:from-white/10 hover:to-white/5 transition-all duration-300 hover:scale-[1.02] text-center">
                             <div className="flex items-center justify-center w-16 h-16 mx-auto rounded-xl gradient-primary glow-primary">
                                 <Settings className="w-8 h-8 text-white" />
                             </div>
@@ -36,7 +36,7 @@ const InfoCard = () => {
                             </div>
                         </div>
 
-                        <div className="ai-card text-center space-y-6 p-6 rounded-2xl shadow-lg bg-white/5 backdrop-blur-md border border-white/20">
+                        <div className="ai-card space-y-6  p-6 rounded-2xl shadow-lg border border-white/10 bg-gradient-to-br from-white/5 to-transparent hover:from-white/10 hover:to-white/5 transition-all duration-300 hover:scale-[1.02] text-center">
                             <div className="flex items-center justify-center w-16 h-16 mx-auto rounded-xl gradient-primary glow-primary">
                                 <Sparkles className="w-8 h-8 text-white" />
                             </div>

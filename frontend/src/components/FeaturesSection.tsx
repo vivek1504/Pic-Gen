@@ -19,18 +19,18 @@ const FeaturesSection = () => {
                             Create Images from Text Prompts Effortlessly
                         </h2>
                         <p className="text-xl text-muted-foreground leading-relaxed">
-                            PicLumen's advanced text-to-picture artificial intelligence uses cutting-edge
+                            PicGen's advanced text-to-picture artificial intelligence uses cutting-edge
                             machine learning techniques to create amazing visuals straight from text
                             prompts. Even if you have no background in design or art since as long as you
                             can type, our AI picture generator will satisfy you. Whether you need a lifelike
-                            portrait, an imaginative anime scene, or a surreal landscape, PicLumen can
+                            portrait, an imaginative anime scene, or a surreal landscape, PicGen can
                             create with amazing clarity.
                         </p>
                     </div>
                 </div>
 
 
-                <div className="grid lg:grid-cols-2 gap-12 items-center">
+                <div className="grid lg:grid-cols-2 gap-12 place-items-end">
                     <div className="space-y-6">
                         <h2 className="text-4xl font-bold">
                             Limitless creativity with AI

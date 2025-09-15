@@ -147,14 +147,316 @@ All colors MUST be HSL.
         transform: translateY(-2px);
     }
 
-    /* .ai-card {
-    @apply  transition-smooth hover:scale-[1.02];
-    background: var(--gradient-card);
-    box-shadow: var(--glow-card);
-    border: 1px solid hsl(262 80% 60% / 0.2);
-  } */
+    .ai-card {
+        @apply transition-smooth hover:scale-[1.02] rounded-2xl;
+        background: var(--gradient-card);
+        box-shadow: var(--glow-card);
+        border: 1px solid hsl(262 80% 60% / 0.2);
+    }
 
-    /* .ai-card:hover {
+    .ai-card:hover {
         box-shadow: var(--glow-primary);
-    } */
+    }
+
+    /* Glass morphism effect for modern UI */
+    .glass {
+        @apply bg-white/10 backdrop-blur-xl border border-white/20;
+    }
+
+    .glass-dark {
+        @apply bg-black/20 backdrop-blur-xl border border-white/10;
+    }
+
+    /* Enhanced animations */
+    .animate-float {
+        animation: float 6s ease-in-out infinite;
+    }
+
+    .animate-glow {
+        animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes float {
+
+        0%,
+        100% {
+            transform: translateY(0px);
+        }
+
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+
+    @keyframes glow {
+        from {
+            box-shadow: 0 0 20px hsl(262 80% 60% / 0.2);
+        }
+
+        to {
+            box-shadow: 0 0 30px hsl(262 80% 60% / 0.4), 0 0 40px hsl(262 80% 60% / 0.2);
+        }
+    }
+
+    /* Parallax-specific animations */
+    @keyframes gradient-shift {
+
+        0%,
+        100% {
+            background-position: 0% center;
+        }
+
+        50% {
+            background-position: 200% center;
+        }
+    }
+
+    .text-shimmer {
+        background: linear-gradient(45deg,
+                hsl(var(--primary)) 0%,
+                hsl(var(--accent)) 25%,
+                hsl(var(--primary)) 50%,
+                hsl(var(--accent)) 75%,
+                hsl(var(--primary)) 100%);
+        background-size: 200% 100%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradient-shift 3s ease-in-out infinite;
+    }
+
+    .parallax-float {
+        animation: float 6s ease-in-out infinite;
+    }
+
+    .parallax-rotate {
+        animation: rotate 20s linear infinite;
+    }
+
+    @keyframes rotate {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    /* Neural network pulse effect */
+    .neural-pulse {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .neural-pulse::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, hsl(var(--primary) / 0.1) 0%, transparent 70%);
+        animation: neural-wave 4s ease-in-out infinite;
+    }
+
+    @keyframes neural-wave {
+
+        0%,
+        100% {
+            transform: scale(0.8) rotate(0deg);
+            opacity: 0.3;
+        }
+
+        50% {
+            transform: scale(1.2) rotate(180deg);
+            opacity: 0.6;
+        }
+    }
+
+    /* Enhanced scrollbar styling */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: hsl(var(--background));
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: hsl(var(--primary) / 0.3);
+        border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: hsl(var(--primary) / 0.5);
+    }
+
+    /* Parallax-specific animations */
+    @keyframes gradient-shift {
+
+        0%,
+        100% {
+            background-position: 0% center;
+        }
+
+        50% {
+            background-position: 200% center;
+        }
+    }
+
+    /* Performance optimizations for parallax */
+    .parallax-container {
+        transform: translate3d(0, 0, 0);
+        -webkit-transform: translate3d(0, 0, 0);
+        will-change: transform;
+    }
+
+    .parallax-element {
+        transform: translate3d(0, 0, 0);
+        -webkit-transform: translate3d(0, 0, 0);
+        will-change: transform;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+    }
+
+    .transform-gpu {
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
+        will-change: transform;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+    }
+
+    /* Locomotive Scroll Styles */
+    html.has-scroll-smooth {
+        overflow: hidden;
+    }
+
+    html.has-scroll-smooth body {
+        overflow: hidden;
+    }
+
+    .has-scroll-smooth [data-scroll-container] {
+        min-height: 100vh;
+    }
+
+    [data-scroll-direction="horizontal"] [data-scroll-container] {
+        height: 100vh;
+        display: inline-block;
+        white-space: nowrap;
+    }
+
+    [data-scroll-direction="horizontal"] [data-scroll-section] {
+        display: inline-block;
+        vertical-align: top;
+        white-space: nowrap;
+        height: 100%;
+    }
+
+    .c-scrollbar {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 11px;
+        height: 100%;
+        transform-origin: center right;
+        transition: transform 0.3s, opacity 0.3s;
+        opacity: 0;
+    }
+    
+    .c-scrollbar:hover {
+        transform: scaleX(1.45);
+    }
+    
+    .c-scrollbar_thumb {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: hsl(var(--primary) / 0.4);
+        opacity: 0.5;
+        width: 7px;
+        border-radius: 10px;
+        margin: 2px;
+        cursor: -webkit-grab;
+        cursor: grab;
+        transition: opacity 0.3s ease, background-color 0.3s ease;
+    }
+    
+    .c-scrollbar_thumb:hover {
+        background-color: hsl(var(--primary) / 0.6);
+        opacity: 1;
+    }
+
+    .has-scroll-scrolling .c-scrollbar,
+    .has-scroll-dragging .c-scrollbar,
+    .c-scrollbar:hover {
+        opacity: 1;
+    }
+
+    [data-scroll-call] {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .is-revealed[data-scroll-call] {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    /* Smooth entrance animations for locomotive scroll */
+    .locomotive-fade-in {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .locomotive-fade-in.is-revealed {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .locomotive-slide-up {
+        opacity: 0;
+        transform: translateY(60px);
+        transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+
+    .locomotive-slide-up.is-revealed {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Performance optimizations for smooth scrolling */
+    [data-scroll-container] {
+        transform: translate3d(0, 0, 0);
+        will-change: transform;
+    }
+
+    [data-scroll] {
+        transform: translate3d(0, 0, 0);
+        will-change: transform;
+    }
+
+    /* Custom scrollbar for locomotive */
+    .locomotive-scrollbar {
+        position: fixed;
+        right: 4px;
+        top: 0;
+        width: 2px;
+        height: 100vh;
+        background: rgba(255, 255, 255, 0.1);
+        z-index: 9999;
+    }
+
+    .locomotive-scrollbar-thumb {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        background: linear-gradient(180deg, hsl(var(--primary)), hsl(var(--accent)));
+        border-radius: 1px;
+    }
+
+    /* Consistent section backgrounds */
+
 }

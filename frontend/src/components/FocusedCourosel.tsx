@@ -1,3 +1,10 @@
+import c1 from "@/assets/c1.jpg";
+import c2 from "@/assets/c2.jpg";
+import c3 from "@/assets/c3.jpg";
+import c4 from "@/assets/c4.jpg";
+import c5 from "@/assets/c5.jpg";
+import c6 from "@/assets/c6.jpg";
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useRef, useState } from 'react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -5,46 +12,38 @@ import 'swiper/css/pagination';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-import s1 from "@/assets/s1.webp";
-import s2 from "@/assets/s2.webp";
-import s3 from "@/assets/s3.webp";
-import s4 from "@/assets/s4.webp";
-import s5 from "@/assets/s5.webp";
-import s6 from "@/assets/s6.webp";
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-
 const SwiperCarousel = () => {
     const swiperRef = useRef(null);
     const [activeIndex, setActiveIndex] = useState(0);
 
     const slides = [
         {
-            src: s2,
+            src: c5,
             title: "Create Design in Any Style",
             desc: "Whether you need a sleek, modern look for a tech startup or a whimsical, hand-drawn style for a children's book, PicGen can generate images in a wide range of artistic styles. From photorealistic renderings to abstract art, the possibilities are endless."
         },
         {
-            src: s3,
+            src: c2,
             title: "Bring Stories to Life with Vivid Illustrations",
             desc: "To improve the content richness of your novels, comics, or interactive stories, you must try adding images. AI-generated character portraits, fantasy landscapes, and sci-fi settings, these can highly help you to finish this purpose without a fortune. Whether you're a game master designing an immersive"
         },
         {
-            src: s5,
+            src: c3,
             title: "Generate Unique Marketing & Social Media Content",
             desc: "Create eye-catching visuals for ads, social media posts, and blog graphics that stand out. PicGen helps marketers and content creators produce custom images that align with brand aesthetics and campaign goals, whether for Instagram, Facebook, Twitter, or LinkedIn."
         },
         {
-            src: s6,
+            src: c4,
             title: "Enhance Learning Materials & Presentations",
             desc: "Generate engaging visuals, infographics, and explainer images with AI to make educational content more compelling. Whether you're designing PowerPoint slides for business presentations, online courses for Udemy, or study materials for Notion, PicGen helps illustrate abstract concepts with stunning clarity."
         },
         {
-            src: s1,
+            src: c6,
             title: "Make Your Brand Stand Out with Custom Visuals",
             desc: "Create unique logos, mascots, and brand imagery that reflect your company's identity. PicGen enables businesses to develop a cohesive visual style for websites, packaging, and promotional materials without the need for expensive design services."
         },
         {
-            src: s4,
+            src: c1,
             title: "Create Instant Concept Art & Game Assets",
             desc: "Generate background settings, character designs, and 3D concept art for use as placeholders or references in game production. PicGen accelerates the creative process and offers a strong basis for additional development whether your project is prototyping concepts for mobile games or VR experiences or producing assets for Unity, Unreal Engine, or Roblox."
         }
@@ -55,7 +54,7 @@ const SwiperCarousel = () => {
     };
 
     return (
-        <div className="w-screen flex flex-col bg-black py-20">
+        <div className="w-screen flex flex-col bg-black/70 py-20">
             <div className="w-screen flex items-center justify-center mb-10 bg-black">
                 <Swiper
                     onSwiper={(swiper) => (swiperRef.current = swiper)}
