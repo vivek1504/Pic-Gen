@@ -1,23 +1,20 @@
-import Header from "@/components/Header";
 import FooterSection from "@/components/FooterSection";
+import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
-import { 
-    Sparkles, 
-    Check, 
-    X, 
-    Zap, 
-    Crown, 
-    Rocket,
-    Star,
-    Shield,
-    Clock,
-    Download,
-    Cpu,
-    Users,
-    Infinity,
-    MessageCircle,
+import {
+    ArrowRight,
     Award,
-    ArrowRight
+    Check,
+    Clock,
+    Cpu,
+    Crown,
+    Download,
+    MessageCircle,
+    Shield,
+    Sparkles,
+    Users,
+    X,
+    Zap
 } from "lucide-react";
 import { useState } from "react";
 
@@ -145,31 +142,31 @@ const Pricing = () => {
     return (
         <div className="min-h-screen">
             <Header />
-            
+
             {/* Hero Section */}
             <section className="relative py-20 px-4 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10" />
                 <div className="absolute top-20 left-1/4 w-72 h-72 bg-primary/20 rounded-full blur-3xl opacity-20" />
                 <div className="absolute bottom-20 right-1/4 w-72 h-72 bg-accent/20 rounded-full blur-3xl opacity-20" />
-                
+
                 <div className="relative container mx-auto text-center space-y-8">
                     <div className="inline-flex items-center space-x-2 bg-primary/10 px-4 py-2 rounded-full border border-primary/20">
                         <Crown className="w-4 h-4 text-primary" />
                         <span className="text-sm font-medium text-primary">Choose Your Creative Plan</span>
                     </div>
-                    
+
                     <h1 className="text-4xl md:text-6xl font-bold leading-tight">
                         Simple, Transparent{" "}
                         <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                             Pricing
                         </span>
                     </h1>
-                    
+
                     <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                        Start creating for free, then choose the perfect plan as you grow. 
+                        Start creating for free, then choose the perfect plan as you grow.
                         All plans include our core AI features with no hidden fees.
                     </p>
-                    
+
                     {/* Billing Toggle */}
                     <div className="flex items-center justify-center space-x-4">
                         <span className={`text-sm font-medium ${!isAnnual ? 'text-foreground' : 'text-muted-foreground'}`}>
@@ -177,14 +174,12 @@ const Pricing = () => {
                         </span>
                         <button
                             onClick={() => setIsAnnual(!isAnnual)}
-                            className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-200 ${
-                                isAnnual ? 'bg-primary' : 'bg-muted'
-                            }`}
+                            className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-200 ${isAnnual ? 'bg-primary' : 'bg-muted'
+                                }`}
                         >
                             <span
-                                className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-200 ${
-                                    isAnnual ? 'translate-x-6' : 'translate-x-1'
-                                }`}
+                                className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-200 ${isAnnual ? 'translate-x-6' : 'translate-x-1'
+                                    }`}
                             />
                         </button>
                         <span className={`text-sm font-medium ${isAnnual ? 'text-foreground' : 'text-muted-foreground'}`}>
@@ -206,15 +201,14 @@ const Pricing = () => {
                         {pricingPlans.map((plan, index) => {
                             const Icon = plan.icon;
                             const price = isAnnual ? plan.annualPrice : plan.monthlyPrice;
-                            
+
                             return (
-                                <div 
+                                <div
                                     key={index}
-                                    className={`relative p-8 rounded-2xl border transition-all duration-300 hover:scale-[1.02] ${
-                                        plan.popular 
-                                            ? 'border-primary bg-gradient-to-br from-primary/5 to-accent/5 shadow-xl shadow-primary/10' 
-                                            : `${plan.borderColor} bg-gradient-to-br from-white/5 to-transparent`
-                                    }`}
+                                    className={`relative p-8 rounded-2xl border transition-all duration-300 hover:scale-[1.02] ${plan.popular
+                                        ? 'border-primary bg-gradient-to-br from-primary/5 to-accent/5 shadow-xl shadow-primary/10'
+                                        : `${plan.borderColor} bg-gradient-to-br from-white/5 to-transparent`
+                                        }`}
                                 >
                                     {plan.popular && (
                                         <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
@@ -223,19 +217,19 @@ const Pricing = () => {
                                             </span>
                                         </div>
                                     )}
-                                    
+
                                     <div className="space-y-6">
                                         {/* Plan Header */}
                                         <div className="space-y-4">
                                             <div className={`inline-flex p-3 rounded-xl bg-gradient-to-r ${plan.color}`}>
                                                 <Icon className="w-6 h-6 text-white" />
                                             </div>
-                                            
+
                                             <div>
                                                 <h3 className="text-2xl font-bold text-foreground">{plan.name}</h3>
                                                 <p className="text-muted-foreground">{plan.description}</p>
                                             </div>
-                                            
+
                                             <div className="space-y-2">
                                                 <div className="flex items-baseline space-x-2">
                                                     <span className="text-4xl font-bold text-foreground">
@@ -254,7 +248,7 @@ const Pricing = () => {
                                                 )}
                                             </div>
                                         </div>
-                                        
+
                                         {/* Features List */}
                                         <div className="space-y-3">
                                             {plan.features.map((feature, featureIndex) => (
@@ -264,22 +258,25 @@ const Pricing = () => {
                                                     ) : (
                                                         <X className="w-5 h-5 text-red-500 flex-shrink-0" />
                                                     )}
-                                                    <span className={`text-sm ${
-                                                        feature.included ? 'text-foreground' : 'text-muted-foreground line-through'
-                                                    }`}>
+                                                    <span className={`text-sm ${feature.included ? 'text-foreground' : 'text-muted-foreground line-through'
+                                                        }`}>
                                                         {feature.text}
                                                     </span>
                                                 </div>
                                             ))}
                                         </div>
-                                        
+
                                         {/* CTA Button */}
-                                        <Button 
-                                            className={`w-full ${
-                                                plan.popular 
-                                                    ? 'btn-primary' 
-                                                    : 'border border-white/20 hover:bg-white/5'
-                                            }`}
+                                        <Button onClick={() => {
+                                            if (plan.name === "Starter") {
+                                                // Redirect to sign-up page for free plan
+                                                window.location.href = "/";
+                                            }
+                                        }}
+                                            className={`w-full ${plan.popular
+                                                ? 'btn-primary'
+                                                : 'border border-white/20 hover:bg-white/5'
+                                                }`}
                                             variant={plan.popular ? 'default' : 'outline'}
                                         >
                                             {plan.cta}
@@ -304,12 +301,12 @@ const Pricing = () => {
                             All our plans include these essential features to help you create amazing AI art
                         </p>
                     </div>
-                    
+
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                         {additionalFeatures.map((feature, index) => {
                             const Icon = feature.icon;
                             return (
-                                <div 
+                                <div
                                     key={index}
                                     className="group p-6 rounded-xl border border-white/10 bg-black/20 hover:bg-black/30 transition-all duration-300 hover:border-primary/20"
                                 >
@@ -317,12 +314,12 @@ const Pricing = () => {
                                         <div className="p-3 rounded-xl bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors duration-300 w-fit">
                                             <Icon className="w-6 h-6" />
                                         </div>
-                                        
+
                                         <div className="space-y-2">
                                             <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
                                                 {feature.title}
                                             </h3>
-                                            
+
                                             <p className="text-sm text-muted-foreground">
                                                 {feature.description}
                                             </p>
@@ -346,10 +343,10 @@ const Pricing = () => {
                             Get answers to common questions about our pricing and plans
                         </p>
                     </div>
-                    
+
                     <div className="space-y-6">
                         {faqs.map((faq, index) => (
-                            <div 
+                            <div
                                 key={index}
                                 className="p-6 rounded-xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent hover:from-white/10 hover:to-white/5 transition-all duration-300"
                             >
@@ -373,17 +370,17 @@ const Pricing = () => {
                             <Users className="w-4 h-4 text-primary" />
                             <span className="text-sm font-medium text-primary">Enterprise Solutions</span>
                         </div>
-                        
+
                         <h2 className="text-3xl md:text-4xl font-bold">
                             Need Something Custom?
                         </h2>
-                        
+
                         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                            We offer custom solutions for large organizations, including dedicated infrastructure, 
+                            We offer custom solutions for large organizations, including dedicated infrastructure,
                             custom AI model training, and enterprise-grade security.
                         </p>
                     </div>
-                    
+
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                         <Button className="btn-primary text-lg px-8 py-3">
                             <MessageCircle className="w-5 h-5 mr-2" />

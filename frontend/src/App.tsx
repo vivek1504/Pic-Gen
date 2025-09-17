@@ -3,14 +3,13 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "../src/components/ui/sonner";
 import { Toaster } from "../src/components/ui/toaster";
 import { TooltipProvider } from "../src/components/ui/tooltip";
-import Index from "./pages/Index";
-import Features from "./pages/Features";
-import Pricing from "./pages/Pricing";
-import Gallery from "./pages/Gallery";
 import About from "./pages/About";
-import NotFound from "./pages/NotFound";
-import ParallaxDemo from "./components/ParallaxDemo";
+import Features from "./pages/Features";
+import Gallery from "./pages/Gallery";
+import Index from "./pages/Index";
 import Login from "./pages/Login";
+import NotFound from "./pages/NotFound";
+import Pricing from "./pages/Pricing";
 import Signup from "./pages/Signup";
 
 const queryClient = new QueryClient();
@@ -27,7 +26,6 @@ const App = () => (
                     <Route path="/pricing" element={<Pricing />} />
                     <Route path="/gallery" element={<Gallery />} />
                     <Route path="/about" element={<About />} />
-                    <Route path="/parallax" element={<ParallaxDemo />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/signup" element={<Signup />} />
                     {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

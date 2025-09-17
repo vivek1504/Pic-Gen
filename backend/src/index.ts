@@ -1,4 +1,4 @@
-import { InferenceClient } from "@huggingface/inference";
+import { clerkMiddleware, getAuth, requireAuth } from "@clerk/express";
 import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
@@ -8,25 +8,19 @@ dotenv.config();
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(clerkMiddleware());
 
-const client = new InferenceClient(process.env.HF_TOKEN);
+app.post("/generate", requireAuth(), async (req, res) => {
+    const { prompt } = req.body;
 
-app.post("/generate", async (req, res) => {
+    if (!prompt) {
+        return res.status(400).json({ error: "Prompt is required" });
+    }
+
     try {
-        const { prompt } = req.body;
+        //ts-ignore
+        const { userId } = getAuth(req)
 
-        const image = await client.textToImage({
-            model: "stabilityai/stable-diffusion-3-medium",
-            inputs: prompt,
-            parameters: { num_inference_steps: 20 },
-        });
-
-        //@ts-ignore
-        const arrayBuffer = await image.arrayBuffer();
-        const buffer = Buffer.from(arrayBuffer);
-        const base64 = buffer.toString("base64");
-
-        res.json({ image: `data:image/png;base64,${base64}` });
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: "Image generation failed" });

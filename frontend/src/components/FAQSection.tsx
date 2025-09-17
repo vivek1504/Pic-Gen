@@ -31,7 +31,7 @@ const faqs = [
 ];
 
 const FAQSection = () => {
-    const [openIndex, setOpenIndex] = useState(0); // first item open by default
+    const [openIndex, setOpenIndex] = useState(-1); // first item open by default
 
     const toggleFAQ = (index) => {
         setOpenIndex(openIndex === index ? null : index);
@@ -49,8 +49,8 @@ const FAQSection = () => {
                         <div
                             key={index}
                             className={`rounded-lg transition-all duration-300 border-b ${openIndex === index
-                                    ? "bg-white/10 backdrop-blur-md border border-white/20 shadow-lg border-"
-                                    : ""
+                                ? "bg-white/10 backdrop-blur-md border border-white/20 shadow-lg border-"
+                                : ""
                                 }`}
                         >
                             <button
@@ -66,8 +66,8 @@ const FAQSection = () => {
 
                             <div
                                 className={`overflow-hidden transition-all duration-500 ease-in-out px-4 pb-4 ${openIndex === index
-                                        ? "max-h-40 opacity-100"
-                                        : "max-h-0 opacity-0"
+                                    ? "max-h-40 opacity-100"
+                                    : "max-h-0 opacity-0"
                                     }`}
                             >
                                 <p className="text-gray-200 text-sm md:text-base">

@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { SignedIn, SignedOut, UserButton } from "@clerk/clerk-react";
-import { Crown, Image, Menu, Sparkles, Star, X, Zap } from "lucide-react";
+import { Crown, Image, Menu, Star, X, Zap } from "lucide-react";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-
+import logo1 from '../assets/logo1.png';
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -23,8 +23,8 @@ const Header = () => {
                     {/* Logo */}
                     <Link to="/" className="flex items-center space-x-3 group cursor-pointer">
                         <div className="relative">
-                            <div className="flex items-center justify-center w-10 h-10 lg:w-12 lg:h-12 rounded-xl gradient-primary glow-primary transition-smooth group-hover:scale-110">
-                                <Sparkles className="w-5 h-5 lg:w-6 lg:h-6 text-white animate-pulse" />
+                            <div className="flex items-center h-16 w-16 justify-center  rounded-xl transition-smooth group-hover:scale-110">
+                                <img src={logo1} alt="Logo" />
                             </div>
                             <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-xl opacity-0 group-hover:opacity-20 transition-smooth" />
                         </div>

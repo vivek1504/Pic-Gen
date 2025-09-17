@@ -2,6 +2,7 @@ import painting from "@/assets/painting.webp";
 import { Button } from "@/components/ui/button";
 import { Shuffle } from "lucide-react";
 import { useState } from "react";
+import Loader from "./Loader";
 
 const HeroSection = () => {
     // Random prompts list
@@ -99,11 +100,17 @@ const HeroSection = () => {
 
                     {/* Right side - Image showcase */}
                     <div className=" p-0 overflow-visible bg-transparent shadow-none max-w-md mx-auto">
-                        <img
-                            src={image ? image : painting}
-                            alt="AI Generated Artwork Showcase"
-                            className="w-full h-auto"
-                        />
+                        {loading && (
+                            <Loader></Loader>
+                        )}
+                        {/* Display generated image or default painting */}
+                        {!loading && (
+                            <img
+                                src={image ? image : painting}
+                                alt="AI Generated Artwork Showcase"
+                                className="w-full h-auto"
+                            />
+                        )}
                     </div>
                 </div>
             </div>

@@ -180,7 +180,6 @@ const FooterSection = () => {
                         <div className="flex items-center space-x-2 text-sm text-muted-foreground">
                             <span>© {currentYear} PicGen™. All rights reserved.</span>
                             <Heart className="w-4 h-4 text-red-500 animate-pulse" />
-                            <span>Made with AI</span>
                         </div>
 
                         {/* Social Links */}

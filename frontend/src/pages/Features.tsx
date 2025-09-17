@@ -143,7 +143,7 @@ const Features = () => {
                         <Button className="btn-primary text-lg px-8 py-3" onClick={() => navigate("/")}>
                             Start Creating Now
                         </Button>
-                        <Button variant="outline" className="text-lg px-8 py-3 border-primary/20 hover:bg-primary/5" onClick={() => navigate("/gallery")}>
+                        <Button variant="outline" className="text-lg px-8 py-3 border-primary/20 hover:bg-primary/5" onClick={() => { navigate("/gallery"); window.scrollTo(0, 0); }}>
                             View Gallery
                         </Button>
                     </div>
@@ -309,10 +309,10 @@ const Features = () => {
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                        <Button className="btn-primary text-lg px-8 py-3">
+                        <Button className="btn-primary text-lg px-8 py-3" onClick={() => { navigate("/"); window.scrollTo(0, 0); }}>
                             Get Started Free
                         </Button>
-                        <Button variant="outline" className="text-lg px-8 py-3 border-primary/20 hover:bg-primary/5">
+                        <Button variant="outline" className="text-lg px-8 py-3 border-primary/20 hover:bg-primary/5" onClick={() => { navigate("/pricing"); window.scrollTo(0, 0); }}>
                             View Pricing
                         </Button>
                     </div>

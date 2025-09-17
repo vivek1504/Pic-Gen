@@ -16,21 +16,21 @@ import { useEffect, useRef, useState } from "react";
 const images = [up1, up2, up3, up4, up5, up6];
 const downImages = [d1, d2, d3, d4, d5, d6];
 const prompts = [
-    "A Space exprlorer from 90's movie poster",
-    "Surreal dreamlike forest",
-    "Portrait of a cyberpunk warrior",
-    "Abstract geometric art with neon",
+    "a sillouette of a car with bright red tail lights at night",
+    "2 face imagined as a anime character from romance manga",
+    "A hyper realistic image of a car in street at night of a futuristic city",
+    "A silluette of a cat on a crumbled paper background",
     "Fantasy castle floating in the sky",
     "Retro 80s synthwave beach",
 ];
 
 const prompts2 = [
-    "A futuristic cityscape at sunset",
-    "Surreal dreamlike forest",
-    "Portrait of a cyberpunk warrior",
-    "Abstract geometric art with neon",
-    "Fantasy castle floating in the sky",
-    "Retro 80s synthwave beach",
+    "A Space exprlorer from 90's movie poster",
+    "A Programmer working on his desk",
+    "Close up of anime character with black hair",
+    "A Mountain top over the clouds at sunset",
+    "A top down shot of plate of salad",
+    "AA black and white photo of a glass framed house in the woods",
 ];
 
 const InfiniteCards = () => {

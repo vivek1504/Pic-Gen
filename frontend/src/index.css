@@ -364,11 +364,11 @@ All colors MUST be HSL.
         transition: transform 0.3s, opacity 0.3s;
         opacity: 0;
     }
-    
+
     .c-scrollbar:hover {
         transform: scaleX(1.45);
     }
-    
+
     .c-scrollbar_thumb {
         position: absolute;
         top: 0;
@@ -382,7 +382,7 @@ All colors MUST be HSL.
         cursor: grab;
         transition: opacity 0.3s ease, background-color 0.3s ease;
     }
-    
+
     .c-scrollbar_thumb:hover {
         background-color: hsl(var(--primary) / 0.6);
         opacity: 1;
@@ -457,6 +457,12 @@ All colors MUST be HSL.
         border-radius: 1px;
     }
 
-    /* Consistent section backgrounds */
+    .locomotive-scrollbar-thumb:hover {
+        background: linear-gradient(180deg, hsl(var(--primary) / 0.8), hsl(var(--accent) / 0.8));
+    }
 
+    [data-scroll-container] {
+        min-height: 100% !important;
+
+    }
 }
