@@ -6,7 +6,6 @@
 
 generator client {
     provider = "prisma-client-js"
-    output   = "../src/generated/prisma"
 }
 
 datasource db {
@@ -16,7 +15,8 @@ datasource db {
 
 model Image {
     id        String   @id @default(cuid())
-    url       String   @unique
+    url       String
+    style     String
     prompt    String
     userId    String
     createdAt DateTime @default(now())
