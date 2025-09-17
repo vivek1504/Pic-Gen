@@ -1,6 +1,7 @@
 import painting from "@/assets/painting.webp";
 import { Button } from "@/components/ui/button";
-import { Shuffle } from "lucide-react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Download, Palette, Shuffle } from "lucide-react";
 import { useState } from "react";
 import Loader from "./Loader";
 
@@ -14,20 +15,37 @@ const HeroSection = () => {
         "A renaissance-style painting of an astronaut holding a flower"
     ];
 
+    // Art styles list
+    const artStyles = [
+        { value: "photo", label: "Photo" },
+        { value: "anime", label: "Anime" },
+        { value: "sketch", label: "Sketch" },
+        { value: "vintage", label: "Vintage" },
+        { value: "painting", label: "Painting" },
+        { value: "3d", label: "3D" }
+    ];
+
     const [prompt, setPrompt] = useState(prompts[0]);
     const [image, setImage] = useState("");
     const [loading, setLoading] = useState(false);
+    const [selectedStyle, setSelectedStyle] = useState("realistic");
 
     const generateImage = async () => {
         if (!prompt) return;
         setLoading(true);
         setImage(null);
 
+        // Combine prompt with selected style
+
         try {
-            const response = await fetch("http://localhost:5000/generate", {
+            const response = await fetch("http://localhost:3000/generate", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ prompt }),
+                body: JSON.stringify({
+                    prompt: prompt,
+                    style: selectedStyle
+                }),
+                credentials: "include"
             });
 
             const data = await response.json();
@@ -44,6 +62,19 @@ const HeroSection = () => {
     const handleShuffle = () => {
         const randomPrompt = prompts[Math.floor(Math.random() * prompts.length)];
         setPrompt(randomPrompt);
+    };
+
+    // Function to download image
+    const downloadImage = () => {
+        if (!image) return;
+
+        // Create a link element
+        const link = document.createElement('a');
+        link.href = image; // Base64 string from backend
+        link.download = `generated-image-${Date.now()}.png`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     };
 
     return (
@@ -87,6 +118,21 @@ const HeroSection = () => {
                                     <Shuffle className="w-4 h-4 mr-1" />
                                 </Button>
 
+                                {/* Style Selection */}
+                                <Select value={selectedStyle} onValueChange={setSelectedStyle}>
+                                    <SelectTrigger className="h-10 w-32 px-3 bg-transparent border border-white/20 hover:bg-white/5 focus:ring-1 focus:ring-white/20 text-sm">
+                                        <Palette className="w-4 h-4 mr-2" />
+                                        <SelectValue />
+                                    </SelectTrigger>
+                                    <SelectContent className="bg-black/90 backdrop-blur-md border-white/10">
+                                        {artStyles.map((style) => (
+                                            <SelectItem key={style.value} value={style.value} className="hover:bg-white/10 text-sm">
+                                                {style.label}
+                                            </SelectItem>
+                                        ))}
+                                    </SelectContent>
+                                </Select>
+
                                 <Button
                                     className="btn-primary h-10 px-6 font-semibold"
                                     onClick={generateImage}
@@ -105,11 +151,25 @@ const HeroSection = () => {
                         )}
                         {/* Display generated image or default painting */}
                         {!loading && (
-                            <img
-                                src={image ? image : painting}
-                                alt="AI Generated Artwork Showcase"
-                                className="w-full h-auto"
-                            />
+                            <div className="relative group">
+                                <img
+                                    src={image ? image : painting}
+                                    alt="AI Generated Artwork Showcase"
+                                    className="w-full h-auto rounded-lg"
+                                />
+                                {/* Download button overlay - only show for generated images */}
+                                {image && (
+                                    <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-100 scale-95">
+                                        <Button
+                                            onClick={downloadImage}
+                                            size="sm"
+                                            className="bg-black/60 backdrop-blur-md border border-white/20 hover:bg-black/80 hover:border-white/30 text-white shadow-lg hover:shadow-xl transition-all duration-200 rounded-lg px-3 py-2"
+                                        >
+                                            <Download className="w-4 h-4" />
+                                        </Button>
+                                    </div>
+                                )}
+                            </div>
                         )}
                     </div>
                 </div>

@@ -9,6 +9,7 @@ import InfoCard from "@/components/InfoCard";
 import NewGenerators from "@/components/NewGenerators";
 import StatsSection from "@/components/StatsSection";
 
+
 const Index = () => {
 
     return (

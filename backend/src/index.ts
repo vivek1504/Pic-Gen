@@ -88,13 +88,28 @@ app.post("/generate", requireAuth(), async (req, res) => {
 });
 
 app.get("/images", async (req, res) => {
+    const page = parseInt(req.query.page as string) || 1;
+    const limit = 12;
+    const offset = (page - 1) * limit;
+
     try {
+        const totalImages = await prisma.image.count();
 
         const images = await prisma.image.findMany({
+            take: limit,
+            skip: offset,
+            select: {
+                style: true,
+                url: true,
+                prompt: true,
+                createdAt: true
+            },
             orderBy: { createdAt: "desc" },
         });
 
-        res.json(images);
+        const totalPages = Math.ceil(totalImages / limit);
+
+        res.status(200).json({ images, totalPages, currentPage: page });
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: "Failed to fetch images" });
