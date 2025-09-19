@@ -6,6 +6,8 @@
 
 generator client {
     provider = "prisma-client-js"
+    binaryTargets = ["native", "debian-openssl-1.1.x"]
+
 }
 
 datasource db {
@@ -21,3 +23,4 @@ model Image {
     userId    String
     createdAt DateTime @default(now())
 }
+

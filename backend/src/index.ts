@@ -1,3 +1,7 @@
+process.on("uncaughtException", (err) => console.error("Uncaught:", err));
+process.on("unhandledRejection", (reason) => console.error("Unhandled Rejection:", reason));
+
+
 import { clerkMiddleware, getAuth, requireAuth } from "@clerk/express";
 import { PrismaClient } from "@prisma/client";
 import { v2 as cloudinary } from "cloudinary";
@@ -25,6 +29,12 @@ cloudinary.config({
 
 app.use(clerkMiddleware());
 
+['CLOUDINARY_CLOUD_NAME', 'CLOUDINARY_API_KEY', 'CLOUDINARY_API_SECRET', 'FREEPIK_API_KEY', 'DATABASE_URL'].forEach(key => {
+  if (!process.env[key]) console.warn(`⚠️ ${key} not set`);
+});
+
+
+app.get("/", (req, res) => res.send("OK"));
 
 app.post("/generate", requireAuth(), async (req, res) => {
     const { prompt, style } = req.body;
@@ -131,4 +141,7 @@ async function uploadBase64Image(base64String: string): Promise<string> {
     }
 }
 
-app.listen(3000, () => console.log(`🚀 Backend running on http://localhost:3000`));
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, () => {
+    console.log(`Server is listening on port ${PORT}`);
+});

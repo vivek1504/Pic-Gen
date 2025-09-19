@@ -1,16 +1,19 @@
 {
-    "compilerOptions": {
-        "target": "ES2022",
-        "module": "ESNext",
-        "moduleResolution": "Node",
-        "outDir": "dist",
-        "rootDir": "src",
-        "esModuleInterop": true,
-        "forceConsistentCasingInFileNames": true,
-        "strict": true,
-        "skipLibCheck": true
-    },
-    "include": [
-        "src"
-    ]
+  "compilerOptions": {
+    "target": "ES2022",                          // Good for modern Node.js features
+    "module": "NodeNext",                        // Better for Node.js ESM resolution than plain ESNext
+    "moduleResolution": "NodeNext",              // Matches the module system (important for .mts/.cts/.d.ts)
+    "outDir": "dist",
+    "rootDir": "src",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,        // Helps with some default import issues
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,                   // Lets you import JSON configs
+    "isolatedModules": true,                     // Helps with ESM + ts-node compatibility
+    "noEmit": false                              // Ensure compiled JS is emitted to dist/
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
 }
