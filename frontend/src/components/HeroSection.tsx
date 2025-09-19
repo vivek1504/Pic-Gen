@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Download, Palette, Shuffle } from "lucide-react";
 import { useState } from "react";
+import { useAuth } from "@clerk/clerk-react"
 import Loader from "./Loader";
 
 const HeroSection = () => {
@@ -24,7 +25,8 @@ const HeroSection = () => {
         { value: "painting", label: "Painting" },
         { value: "3d", label: "3D" }
     ];
-
+    const BASE_URL = import.meta.env.VITE_API_URL
+    const { getToken} = useAuth()
     const [prompt, setPrompt] = useState(prompts[0]);
     const [image, setImage] = useState("");
     const [loading, setLoading] = useState(false);
@@ -38,9 +40,10 @@ const HeroSection = () => {
         // Combine prompt with selected style
 
         try {
-            const response = await fetch("http://localhost:3000/generate", {
+            const token = await getToken()
+            const response = await fetch(`${BASE_URL}/generate`, {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: { "Content-Type": "application/json" , Authorization: `Bearer ${token}`,},
                 body: JSON.stringify({
                     prompt: prompt,
                     style: selectedStyle

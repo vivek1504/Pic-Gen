@@ -41,6 +41,7 @@ const Gallery = () => {
     const [totalImages, setTotalImages] = useState(0);
     const [isLoadingPage, setIsLoadingPage] = useState(false);
     const itemsPerPage = 12;
+    const BASE_URL = import.meta.env.VITE_API_URL;
 
     // Function to fetch images from API
     const fetchImages = async (page: number = 1, isPageChange: boolean = false) => {
@@ -53,7 +54,7 @@ const Gallery = () => {
             setError(null);
 
             const response = await fetch(
-                `http://localhost:3000/images?page=${page}&limit=${itemsPerPage}`
+                `${BASE_URL}/images?page=${page}&limit=${itemsPerPage}`
             );
 
             if (!response.ok) {
