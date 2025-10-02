@@ -9,12 +9,16 @@ import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 
+const allowedOrigins = [
+  "http://localhost:8080",
+  "https://picgenai.vercel.app"
+];
 
 const app = express();
 const prisma = new PrismaClient();
 
 app.use(cors({
-    origin: "http://localhost:8080", // your frontend URL
+    origin: allowedOrigins,
     credentials: true // allow cookies/auth headers
 }));
 app.use(express.json());
@@ -65,6 +69,7 @@ app.post("/generate", requireAuth(), async (req, res) => {
                 }
             }),
         });
+        console.log(response)
 
         if (!response.ok) {
             const errorData = await response.json();
