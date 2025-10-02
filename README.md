@@ -54,7 +54,7 @@ You'll need to obtain API keys from the following services:
 ### 1. Clone the Repository
 
 ```bash
-git clone <your-repository-url>
+git clone https://github.com/vivek1504/PicGen
 cd image
 ```
 
