@@ -363,11 +363,3 @@ cd backend && npm run build
 # Test frontend environment
 cd frontend && npm run build
 ```
-
-## License
-
-This project is licensed under the ISC License. See the LICENSE file for details.
-
-## Support
-
-If you encounter any issues or have questions, please open an issue on the GitHub repository or contact the development team.
